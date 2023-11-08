@@ -18,7 +18,12 @@ export class ProductListComponent {
   }
 
   constructor() {
-    this.products = this.productService.getProducts();
+    this
+      .productService
+      .products$
+      .subscribe(
+        data => this.products = data
+      )
   }
 
 }
