@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product.interface';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -9,21 +10,26 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductListComponent {
   title: string = 'Products'
-  products: Product[]
+  //products: Product[]
   selectedProduct: Product;
+  products$: Observable<Product[]>;
+
   private productService = inject(ProductService);
+
 
   onSelect(product: Product) {
     this.selectedProduct = product;
   }
 
   constructor() {
-    this
-      .productService
-      .products$
-      .subscribe(
-        data => this.products = data
-      )
+    this.products$ = this.productService.products$;
+
+    // this
+    //   .productService
+    //   .products$
+    //   .subscribe(
+    //     data => this.products = data
+    //   )
   }
 
 }
