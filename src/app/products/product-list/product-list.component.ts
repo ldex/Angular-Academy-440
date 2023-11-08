@@ -9,6 +9,11 @@ import { Product } from 'src/app/models/product.interface';
 export class ProductListComponent {
   title: string = 'Products'
   products: Product[]
+  selectedProduct: Product;
+
+  onSelect(product: Product) {
+    this.selectedProduct = product;
+  }
 
   constructor() {
     this.products = [
