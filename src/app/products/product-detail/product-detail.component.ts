@@ -1,5 +1,5 @@
 import { Component, Input, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product.interface';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -14,6 +14,20 @@ export class ProductDetailComponent {
 
   private activatedRoute = inject(ActivatedRoute);
   private productService = inject(ProductService);
+  private router = inject(Router);
+
+  deleteProduct() {
+    this
+      .productService
+      .deleteProduct(this.product.id)
+      .subscribe(
+        () => {
+          console.log('Product deleted on the server.');
+          this.productService.clearCache();
+          this.router.navigateByUrl('/products');
+        }
+      )
+  }
 
   constructor() {
     let id = this.activatedRoute.snapshot.params['id'];
