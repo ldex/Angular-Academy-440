@@ -16,6 +16,26 @@ export class ProductListComponent {
 
   private productService = inject(ProductService);
 
+  // Pagination
+  pageSize = 5;
+  start = 0;
+  end = this.pageSize;
+  pageNumber = 1;
+
+  previousPage() {
+    this.start -= this.pageSize;
+    this.end -= this.pageSize;
+    this.pageNumber--;
+    this.selectedProduct = undefined;
+  }
+
+  nextPage() {
+    this.start += this.pageSize;
+    this.end += this.pageSize;
+    this.pageNumber++;
+    this.selectedProduct = undefined;
+  }
+
 
   onSelect(product: Product) {
     this.selectedProduct = product;

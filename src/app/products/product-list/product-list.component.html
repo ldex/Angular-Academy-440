@@ -4,7 +4,7 @@
 
 @if(products$ | async; as products) {
     <ul class="products">
-        <li *ngFor="let product of products"
+        <li *ngFor="let product of products | slice:start:end"
             [class.selected]="product === selectedProduct"
             [class.discontinued]="product.discontinued"
             (click)="onSelect(product)">
@@ -13,6 +13,13 @@
             <span class="price">{{ product.price | currency:'CAD':'symbol-narrow':'.2' }}</span>
         </li>
     </ul>
+
+    <div>
+        <button (click)="previousPage()" [disabled]="start == 0">Previous Page</button>
+        Page {{ pageNumber }}
+        <button (click)="nextPage()">Next Page</button>
+    </div>
+
 } @else {
     <h2 class="loading">Loading</h2>
 }
