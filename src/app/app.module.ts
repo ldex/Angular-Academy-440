@@ -12,9 +12,9 @@ import { ProductsModule } from './products/products.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
-    ProductsModule
+    ProductsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
