@@ -8,7 +8,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 })
 export class ProductService {
 
-  private baseUrl = 'https://storerestservice.azurewebsites.net/api/products/';
+  private baseUrl = 'https://671d383409103098807c943e.mockapi.io/api/products/';
   products$: Observable<Product[]>;
 
   constructor(private http: HttpClient) {
@@ -36,11 +36,9 @@ export class ProductService {
   }
 
   initProducts() {
-    let url:string = this.baseUrl + '?$orderby=ModifiedDate%20desc';
-
     this.products$ = this
                       .http
-                      .get<Product[]>(url)
+                      .get<Product[]>(this.baseUrl)
                       .pipe(
                         tap(console.table),
                         delay(1500), // For the demo!!

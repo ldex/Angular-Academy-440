@@ -16,19 +16,6 @@ export class ProductDetailComponent {
   private productService = inject(ProductService);
   private router = inject(Router);
 
-  deleteProduct() {
-    this
-      .productService
-      .deleteProduct(this.product.id)
-      .subscribe(
-        () => {
-          console.log('Product deleted on the server.');
-          this.productService.clearCache();
-          this.router.navigateByUrl('/products');
-        }
-      )
-  }
-
   constructor() {
     let id = this.activatedRoute.snapshot.params['id'];
 
