@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 
 @Component({
     templateUrl: './error.component.html',
-    standalone: true
 })
 export class ErrorComponent {
 
