@@ -40,8 +40,8 @@ export class ProductService {
                       .http
                       .get<Product[]>(this.baseUrl)
                       .pipe(
-                        tap(console.table),
-                        delay(1500), // For the demo!!
+                        //tap(console.table),
+                        delay(500), // For the demo!!
                         catchError(this.handleError),
                         shareReplay()
                       )

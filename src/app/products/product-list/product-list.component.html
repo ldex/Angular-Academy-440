@@ -2,7 +2,8 @@
     {{ title }}
 </h2>
 
-@if(products$ | async; as products) {
+<div *ngIf="products$ | async as products; else loading">
+
     <ul class="products">
         <li *ngFor="let product of products | slice:start:end"
             [class.selected]="product === selectedProduct"
@@ -21,9 +22,11 @@
     <div>
         <button (click)="previousPage()" [disabled]="start == 0">Previous Page</button>
         Page {{ pageNumber }}
-        <button (click)="nextPage()">Next Page</button>
+        <button (click)="nextPage()" [disabled]="products?.length <= end">Next Page</button>
     </div>
 
-} @else {
-    <h2 class="loading">Loading</h2>
-}
+</div>
+
+<ng-template #loading>
+    <div class="loading">Loading products...</div>
+</ng-template>

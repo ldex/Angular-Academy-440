@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product.interface';
 import { ProductService } from 'src/app/services/product.service';
@@ -10,8 +10,10 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductInsertComponent {
 
-  private productService = inject(ProductService);
-  private router = inject(Router);
+  constructor(
+    private productService: ProductService,
+    private router: Router
+  ) { }
 
   onSubmit(newProduct: Product) {
     this

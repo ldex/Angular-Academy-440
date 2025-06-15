@@ -1,5 +1,5 @@
-import { Component, Input, inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product.interface';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -12,11 +12,10 @@ export class ProductDetailComponent {
 
   @Input() product: Product
 
-  private activatedRoute = inject(ActivatedRoute);
-  private productService = inject(ProductService);
-  private router = inject(Router);
-
-  constructor() {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private productService: ProductService,
+  ) {
     let id = this.activatedRoute.snapshot.params['id'];
 
     this

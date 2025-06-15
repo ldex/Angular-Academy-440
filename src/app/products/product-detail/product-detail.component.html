@@ -1,5 +1,4 @@
-@if (product) {
-<div>
+<div *ngIf="product; else noProduct">
     <h2>{{product.name | uppercase}}</h2>
     <img style="float:right" [src]="product.imageUrl" *ngIf="product.imageUrl" width="250" />
     <h3>{{product.description}}</h3>
@@ -9,6 +8,7 @@
     <p>Modified date:
         {{product.modifiedDate | date}}</p>
 </div>
-} @else {
-<h2>No product to display</h2>
-}
+
+<ng-template #noProduct>
+    <h2>No product to display</h2>
+</ng-template>
