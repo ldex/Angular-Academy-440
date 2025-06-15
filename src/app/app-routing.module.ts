@@ -7,13 +7,13 @@ import { ErrorComponent } from './shared/error.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch:'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'home', component: HomeComponent, title: 'Home Page' },
+  { path: 'contact', component: ContactComponent, title: 'Contact Us' },
+  { path: 'admin', component: AdminComponent, title: 'Admin Area' },
   { path: 'products', loadChildren: () =>
                         import('./products/products.module')
                         .then(m => m.ProductsModule) },
-  { path: '**', component: ErrorComponent }
+  { path: '**', component: ErrorComponent, title: 'Page Not Found' }
 ];
 
 @NgModule({
