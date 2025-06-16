@@ -8,16 +8,14 @@ import { ProductInsertComponent } from './product-insert/product-insert.componen
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    ProductDetailComponent,
-    ProductListComponent,
-    ProductInsertComponent
-  ],
-  exports: [ProductListComponent],
-  imports: [
-    CommonModule,
-    ProductsRoutingModule,
-    FormsModule
-  ]
+    exports: [ProductListComponent],
+    imports: [
+        CommonModule,
+        ProductsRoutingModule,
+        FormsModule,
+        ProductDetailComponent,
+        ProductListComponent,
+        ProductInsertComponent
+    ]
 })
 export class ProductsModule { }
