@@ -1,6 +1,6 @@
 # Angular Academy Demo Modern Start
 
-Starter Project for the Modern Angular Workshop by <a href="https://angular.ac" target="_blank">Angular Academy</a>.
+Demo Project for the Modern Angular Workshop by <a href="https://angular.ac" target="_blank">Angular Academy</a>.
 
 [![Angular Academy](https://www.angularacademy.ca/images/classroom.jpg "Angular Academy")](https://www.angularacademy.ca)
 
