@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Product } from '../models/product.interface';
 import { Observable, catchError, delay, map, shareReplay, tap, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -7,11 +7,13 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProductService {
+  private http = inject(HttpClient);
+
 
   private baseUrl = 'https://671d383409103098807c943e.mockapi.io/api/products/';
   products$: Observable<Product[]>;
 
-  constructor(private http: HttpClient) {
+  constructor() {
     this.initProducts();
   }
 

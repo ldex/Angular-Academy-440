@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product.interface';
 import { ProductService } from 'src/app/services/product.service';
-import { NgIf } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -10,14 +10,12 @@ import { FormsModule } from '@angular/forms';
     templateUrl: './product-insert.component.html',
     styleUrl: './product-insert.component.css',
     standalone: true,
-    imports: [FormsModule, NgIf],
+    imports: [FormsModule],
 })
 export class ProductInsertComponent {
+  private productService = inject(ProductService);
+  private router = inject(Router);
 
-  constructor(
-    private productService: ProductService,
-    private router: Router
-  ) { }
 
   onSubmit(newProduct: Product) {
     this
